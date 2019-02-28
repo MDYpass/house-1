@@ -172,7 +172,7 @@
                             <a href="/accounts/logout" class="promoted">退出</a>
                         <#else>
                             <a href="/accounts/register" class="promoted"><strong>Register</strong></a>
-                            <a href="/accounts/signin">Sign In</a>
+                            <a href="/accounts/toSignin">Sign In</a>
                         </#if>
                     </div>
                     <div class="language-bar">

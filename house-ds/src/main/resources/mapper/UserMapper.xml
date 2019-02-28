@@ -18,6 +18,9 @@
     <result column="enable" jdbcType="BIT" property="enable" />
     <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
   </resultMap>
+  <sql id="Base_Column_List">
+    id,name,phone,email,aboutme,passwd,avatar,type,create_time,enable,agency_id
+  </sql>
   <insert id="insert" parameterType="com.lusiwei.house.common.pojo.User">
     <!--
       WARNING - @mbg.generated
@@ -32,6 +35,12 @@
       #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{createTime,jdbcType=DATE}, 
       #{enable,jdbcType=BIT}, #{agencyId,jdbcType=INTEGER})
   </insert>
+    <update id="updateStatus">
+      update user set enable=1 where email=#{email}
+    </update>
+    <delete id="deleteUserByEmail">
+    delete from user where email=#{email} and enable=0
+  </delete>
   <select id="selectAll" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -41,4 +50,18 @@
     agency_id
     from user
   </select>
+  <select id="selectByUserName" resultType="java.lang.Integer">
+    select count(1) from user where name=#{name}
+  </select>
+  <select id="selectByPhone" resultType="java.lang.Integer">
+    select count(1) from user where phone=#{phone}
+  </select>
+  <select id="selectByEmail" resultType="java.lang.Integer">
+    select count(1) from user where email=#{email}
+  </select>
+    <select id="selectByEmailAndPassword" resultType="com.lusiwei.house.common.pojo.User">
+      select
+      <include refid="Base_Column_List"/>
+      from user where email=#{email} and passwd=#{password}
+    </select>
 </mapper>

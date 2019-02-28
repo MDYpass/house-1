@@ -345,7 +345,7 @@
 				}
 			}
 			
-			// account for any pre-data padding
+			// accounts for any pre-data padding
 			if (onesFormat.length > onePortion.length) {
 				var padStart = onesFormat.indexOf('0');
 				if (padStart != -1) {

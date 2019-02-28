@@ -169,7 +169,7 @@ $(document).ready(function($) {
         agentState();
     });
 
-    $('#create-account-user').on('ifClicked', function(event) {
+    $('#create-accounts-user').on('ifClicked', function(event) {
         $('#agent-switch').data('agent-state', '');
         agentState();
     });
