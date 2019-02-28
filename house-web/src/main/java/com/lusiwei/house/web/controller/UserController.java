@@ -90,6 +90,9 @@ public class UserController {
         ResponseResult responseResult = userService.doSignin(username, password);
         User user = (User) responseResult.getData();
         if (user != null) {
+            if (!user.getEnable()) {
+                return "redirect:";
+            }
             modelMap.put("loginUser", user);
             request.getSession().setAttribute(Constant.SESSION_KEY, user);
             if (StrUtil.equals(autoLogin, "1")) {
@@ -124,5 +127,9 @@ public class UserController {
     public String getProfile(ModelMap modelMap){
         modelMap.put("picServer", Constant.PIC_SERVER);
         return "/user/accounts/profile";
+    }
+    @RequestMapping("/accounts/changePassword")
+    public String changePassword(){
+        return null;
     }
 }
